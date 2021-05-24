@@ -594,7 +594,7 @@ class MdulosApi
      */
     public function cotacaoPhpPost($cnpj, $token, $peso, $cep_destino, $valor, $volumes, $altura, $largura, $comprimento)
     {
-        $this->cotacaoPhpPostWithHttpInfo($cnpj, $token, $peso, $cep_destino, $valor, $volumes, $altura, $largura, $comprimento);
+        return $this->cotacaoPhpPostWithHttpInfo($cnpj, $token, $peso, $cep_destino, $valor, $volumes, $altura, $largura, $comprimento);
     }
 
     /**
@@ -649,7 +649,7 @@ class MdulosApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            return $response;
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
