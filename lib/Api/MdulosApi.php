@@ -938,7 +938,7 @@ class MdulosApi
      */
     public function rastreamentoPhpGet($cnpj, $token, $chave_n_fe = null, $conhecimento = null, $chave_c_te = null)
     {
-        $this->rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe, $conhecimento, $chave_c_te);
+        return $this->rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe, $conhecimento, $chave_c_te);
     }
 
     /**
@@ -989,7 +989,7 @@ class MdulosApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            return $response;
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
