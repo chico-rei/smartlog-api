@@ -63,11 +63,12 @@ $apiInstance = new Swagger\Client\Api\MdulosApi(
 );
 $cnpj = "cnpj_example"; // string | 
 $token = "token_example"; // string | 
+$cep = "cep_example"; // string | 
 
 try {
-    $apiInstance->cEPsAtendidosColetaPhpGet($cnpj, $token);
+    $apiInstance->cEPsAtendidosPhpGet($cnpj, $token, $cep);
 } catch (Exception $e) {
-    echo 'Exception when calling MdulosApi->cEPsAtendidosColetaPhpGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MdulosApi->cEPsAtendidosPhpGet: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -79,14 +80,16 @@ All URIs are relative to *http://api.sistemasmartlog.com.br*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MdulosApi* | [**cEPsAtendidosColetaPhpGet**](docs/Api/MdulosApi.md#cepsatendidoscoletaphpget) | **GET** /CEPsAtendidosColeta.php | Consultar os CEP&#39;s onde a coleta está disponível
-*MdulosApi* | [**cEPsAtendidosEntregaPhpGet**](docs/Api/MdulosApi.md#cepsatendidosentregaphpget) | **GET** /CEPsAtendidosEntrega.php | Consultar os CEP&#39;s onde a entrega está disponível
+*MdulosApi* | [**cEPsAtendidosPhpGet**](docs/Api/MdulosApi.md#cepsatendidosphpget) | **GET** /CEPsAtendidos.php | Consultar se o CEP é atendido.
 *MdulosApi* | [**cotacaoPhpPost**](docs/Api/MdulosApi.md#cotacaophppost) | **POST** /Cotacao.php | Realizar cotação de valor de frete
 *MdulosApi* | [**rastreamentoPhpGet**](docs/Api/MdulosApi.md#rastreamentophpget) | **GET** /Rastreamento.php | Consultar o status da encomenda
+*MdulosApi* | [**referenciaEmbarquePhpPost**](docs/Api/MdulosApi.md#referenciaembarquephppost) | **POST** /ReferenciaEmbarque.php | Realizar criação de código de referência de embarque
 
 
 ## Documentation For Models
 
+ - [NotasFiscais](docs/Model/NotasFiscais.md)
+ - [Referencia](docs/Model/Referencia.md)
 
 
 ## Documentation For Authorization

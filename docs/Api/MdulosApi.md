@@ -4,64 +4,16 @@ All URIs are relative to *http://api.sistemasmartlog.com.br*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cEPsAtendidosColetaPhpGet**](MdulosApi.md#cEPsAtendidosColetaPhpGet) | **GET** /CEPsAtendidosColeta.php | Consultar os CEP&#39;s onde a coleta está disponível
-[**cEPsAtendidosEntregaPhpGet**](MdulosApi.md#cEPsAtendidosEntregaPhpGet) | **GET** /CEPsAtendidosEntrega.php | Consultar os CEP&#39;s onde a entrega está disponível
+[**cEPsAtendidosPhpGet**](MdulosApi.md#cEPsAtendidosPhpGet) | **GET** /CEPsAtendidos.php | Consultar se o CEP é atendido.
 [**cotacaoPhpPost**](MdulosApi.md#cotacaoPhpPost) | **POST** /Cotacao.php | Realizar cotação de valor de frete
 [**rastreamentoPhpGet**](MdulosApi.md#rastreamentoPhpGet) | **GET** /Rastreamento.php | Consultar o status da encomenda
+[**referenciaEmbarquePhpPost**](MdulosApi.md#referenciaEmbarquePhpPost) | **POST** /ReferenciaEmbarque.php | Realizar criação de código de referência de embarque
 
 
-# **cEPsAtendidosColetaPhpGet**
-> cEPsAtendidosColetaPhpGet($cnpj, $token)
+# **cEPsAtendidosPhpGet**
+> cEPsAtendidosPhpGet($cnpj, $token, $cep)
 
-Consultar os CEP's onde a coleta está disponível
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$apiInstance = new Swagger\Client\Api\MdulosApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
-);
-$cnpj = "cnpj_example"; // string | 
-$token = "token_example"; // string | 
-
-try {
-    $apiInstance->cEPsAtendidosColetaPhpGet($cnpj, $token);
-} catch (Exception $e) {
-    echo 'Exception when calling MdulosApi->cEPsAtendidosColetaPhpGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cnpj** | **string**|  |
- **token** | **string**|  |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **cEPsAtendidosEntregaPhpGet**
-> cEPsAtendidosEntregaPhpGet($cnpj, $token)
-
-Consultar os CEP's onde a entrega está disponível
+Consultar se o CEP é atendido.
 
 ### Example
 ```php
@@ -75,11 +27,12 @@ $apiInstance = new Swagger\Client\Api\MdulosApi(
 );
 $cnpj = "cnpj_example"; // string | 
 $token = "token_example"; // string | 
+$cep = "cep_example"; // string | 
 
 try {
-    $apiInstance->cEPsAtendidosEntregaPhpGet($cnpj, $token);
+    $apiInstance->cEPsAtendidosPhpGet($cnpj, $token, $cep);
 } catch (Exception $e) {
-    echo 'Exception when calling MdulosApi->cEPsAtendidosEntregaPhpGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MdulosApi->cEPsAtendidosPhpGet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -90,6 +43,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cnpj** | **string**|  |
  **token** | **string**|  |
+ **cep** | **string**|  |
 
 ### Return type
 
@@ -169,7 +123,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **rastreamentoPhpGet**
-> rastreamentoPhpGet($cnpj, $token, $chave_n_fe, $conhecimento, $chave_c_te)
+> rastreamentoPhpGet($cnpj, $token, $chave_n_fe, $conhecimento)
 
 Consultar o status da encomenda
 
@@ -187,10 +141,9 @@ $cnpj = "cnpj_example"; // string |
 $token = "token_example"; // string | 
 $chave_n_fe = 8.14; // float | 
 $conhecimento = "conhecimento_example"; // string | 
-$chave_c_te = 8.14; // float | 
 
 try {
-    $apiInstance->rastreamentoPhpGet($cnpj, $token, $chave_n_fe, $conhecimento, $chave_c_te);
+    $apiInstance->rastreamentoPhpGet($cnpj, $token, $chave_n_fe, $conhecimento);
 } catch (Exception $e) {
     echo 'Exception when calling MdulosApi->rastreamentoPhpGet: ', $e->getMessage(), PHP_EOL;
 }
@@ -205,7 +158,60 @@ Name | Type | Description  | Notes
  **token** | **string**|  |
  **chave_n_fe** | **float**|  | [optional]
  **conhecimento** | **string**|  | [optional]
- **chave_c_te** | **float**|  | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **referenciaEmbarquePhpPost**
+> referenciaEmbarquePhpPost($cnpj, $token, $unidade, $body)
+
+Realizar criação de código de referência de embarque
+
+Este método tem o objetivo de realizar a solicitação/criação de uma minuta eletronica de acordo com os parametros informados
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\MdulosApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$cnpj = "cnpj_example"; // string | 
+$token = "token_example"; // string | 
+$unidade = "unidade_example"; // string | Sigla na unidade Smartlog
+$body = new \Swagger\Client\Model\Referencia(); // \Swagger\Client\Model\Referencia | Dados do pedido ou nota fiscal
+
+try {
+    $apiInstance->referenciaEmbarquePhpPost($cnpj, $token, $unidade, $body);
+} catch (Exception $e) {
+    echo 'Exception when calling MdulosApi->referenciaEmbarquePhpPost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cnpj** | **string**|  |
+ **token** | **string**|  |
+ **unidade** | **string**| Sigla na unidade Smartlog |
+ **body** | [**\Swagger\Client\Model\Referencia**](../Model/Referencia.md)| Dados do pedido ou nota fiscal |
 
 ### Return type
 
