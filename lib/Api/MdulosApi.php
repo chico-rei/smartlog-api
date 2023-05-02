@@ -707,9 +707,9 @@ class MdulosApi
      *@throws \InvalidArgumentException
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function rastreamentoPhpGet($cnpj, $token, $chave_n_fe = null, $conhecimento = null)
+    public function rastreamentoPhpGet($cnpj, $token, $chave_n_fe = null, $conhecimento = null, $unit = null)
     {
-        return $this->rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe, $conhecimento);
+        return $this->rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe, $conhecimento,$unit);
     }
 
     /**
@@ -726,10 +726,10 @@ class MdulosApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe = null, $conhecimento = null)
+    public function rastreamentoPhpGetWithHttpInfo($cnpj, $token, $chave_n_fe = null, $conhecimento = null, $unit = null)
     {
         $returnType = '';
-        $request = $this->rastreamentoPhpGetRequest($cnpj, $token, $chave_n_fe, $conhecimento);
+        $request = $this->rastreamentoPhpGetRequest($cnpj, $token, $chave_n_fe, $conhecimento, $unit);
 
         try {
             $options = $this->createHttpClientOption();
@@ -843,7 +843,7 @@ class MdulosApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function rastreamentoPhpGetRequest($cnpj, $token, $chave_n_fe = null, $conhecimento = null)
+    protected function rastreamentoPhpGetRequest($cnpj, $token, $chave_n_fe = null, $conhecimento = null, $unit = null)
     {
         // verify the required parameter 'cnpj' is set
         if ($cnpj === null || (is_array($cnpj) && count($cnpj) === 0)) {
@@ -880,6 +880,10 @@ class MdulosApi
         // query params
         if ($conhecimento !== null) {
             $queryParams['Conhecimento'] = ObjectSerializer::toQueryValue($conhecimento);
+        }
+
+        if ($unit!== null) {
+            $queryParams['Unidade'] = ObjectSerializer::toQueryValue($unit);
         }
 
 
